@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vorschau für Top Ten Budo Akademie · Optimo Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --head:#241E2B; --soft:#5C5660; --muted:#8B847E;
+    --plum:#4C3E5E; --coral:#ED7472;
+    --head-f:'Fraunces',Georgia,serif;
+    --body-f:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;color:#fff;font-family:var(--body-f);line-height:1.5;font-size:14px;
+    -webkit-font-smoothing:antialiased;overflow:hidden}
+  /* ===== Bühne: Lead-Website als Vollbild-Hintergrund (= Personalisierung) ===== */
+  .stage{position:fixed;inset:0;overflow:hidden}
+  .shot{position:absolute;inset:0;background-image:url("bg.jpg");
+    background-size:cover;background-position:top center}
+  /* dezenter Verlauf für Lesbarkeit der Bubble/Texte unten links + oben */
+  .scrim{position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(20,14,24,.34) 0%, rgba(20,14,24,0) 22%),
+    radial-gradient(85% 80% at 0% 100%, rgba(20,14,24,.66) 0%, rgba(20,14,24,0) 60%)}
+
+  /* ===== Topbar ===== */
+  .topbar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;
+    justify-content:space-between;gap:14px;padding:18px 22px;z-index:5}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .logo{background:rgba(255,255,255,.94);border-radius:11px;padding:7px 12px;display:flex;
+    box-shadow:0 8px 22px -10px rgba(0,0,0,.5)}
+  .brand .logo svg{height:20px;width:auto;display:block}
+  .crumb{font-size:13px;color:rgba(255,255,255,.92);text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .crumb b{font-weight:600}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;
+    color:#fff;background:rgba(20,14,24,.42);border:1px solid rgba(255,255,255,.22);
+    padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+  .pill .d{width:7px;height:7px;border-radius:50%;background:var(--coral)}
+
+  /* ===== Unten links: Video-Bubble + Sprech-Karte ===== */
+  .dock{position:absolute;left:30px;bottom:30px;z-index:5;display:flex;align-items:flex-end;gap:20px;
+    max-width:calc(100% - 60px)}
+  .bubble{position:relative;width:236px;height:236px;flex:none;border-radius:50%;cursor:pointer}
+  .bubble .ring{position:absolute;inset:-6px;border-radius:50%;
+    background:conic-gradient(from 0deg,#4C3E5E,#ED7472,#F59E0B,#248F59,#4C3E5E);
+    filter:saturate(1.05);animation:spin 9s linear infinite;opacity:.95}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .bubble .vidwrap{position:absolute;inset:0;border-radius:50%;overflow:hidden;
+    border:4px solid #fff;box-shadow:0 26px 48px -16px rgba(0,0,0,.6)}
+  .bubble video{width:100%;height:100%;object-fit:cover;display:block;background:#10131A}
+  .bubble .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;background:rgba(20,14,24,.28);transition:opacity .25s ease}
+  .bubble.playing .play{opacity:0;pointer-events:none}
+  .bubble .play .btn{width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
+  .bubble .play .btn svg{width:24px;height:24px;margin-left:3px;fill:var(--plum)}
+  .bubble .live{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);
+    display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;color:#fff;
+    background:var(--plum);padding:4px 11px;border-radius:999px;white-space:nowrap;
+    box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+
+  /* Sprech-Karte neben der Bubble */
+  .say{background:rgba(255,255,255,.96);color:var(--head);border-radius:16px 16px 16px 4px;
+    padding:15px 18px;max-width:380px;box-shadow:0 26px 50px -22px rgba(20,12,24,.6);
+    backdrop-filter:blur(6px)}
+  .say .ey{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);font-weight:600}
+  .say h1{font-family:var(--head-f);font-size:20px;line-height:1.18;letter-spacing:-.01em;
+    color:var(--head);font-weight:500;margin:6px 0 0}
+  .say p{font-size:13px;color:var(--soft);margin:7px 0 0;line-height:1.45}
+  .say .cta{position:relative;display:inline-flex;align-items:center;gap:9px;margin-top:13px;
+    background:var(--plum);color:#fff;text-decoration:none;font-weight:600;font-size:13px;
+    padding:11px 17px;border-radius:10px;cursor:pointer;
+    box-shadow:0 12px 22px -12px rgba(76,62,94,.8);
+    transition:transform .14s ease, box-shadow .14s ease, background .14s ease}
+  .say .cta svg{width:16px;height:16px}
+  .say .cta .arr{transition:transform .14s ease;font-weight:700}
+  .say .cta:hover{transform:translateY(-2px);background:#5a4a6f;
+    box-shadow:0 18px 30px -10px rgba(76,62,94,.95)}
+  .say .cta:hover .arr{transform:translateX(4px)}
+  .say .cta:active{transform:translateY(0)}
+  /* Puls-Ring: signalisiert „anklickbar" auch ohne Hover */
+  .say .cta-go{animation:ctaPulse 2.4s ease-in-out infinite}
+  @keyframes ctaPulse{
+    0%,100%{box-shadow:0 12px 22px -12px rgba(76,62,94,.8), 0 0 0 0 rgba(76,62,94,.5)}
+    55%{box-shadow:0 12px 22px -12px rgba(76,62,94,.8), 0 0 0 8px rgba(76,62,94,0)}}
+  @media (prefers-reduced-motion:reduce){.say .cta-go{animation:none}}
+
+  .foot{position:absolute;right:22px;bottom:18px;z-index:5;font-size:11px;
+    color:rgba(255,255,255,.82);text-shadow:0 1px 3px rgba(0,0,0,.5)}
+
+  @media (max-width:720px){
+    .dock{flex-direction:column;align-items:flex-start;left:18px;bottom:18px;gap:14px}
+    .bubble{width:150px;height:150px}
+    .say{max-width:calc(100vw - 40px)}
+    .crumb{display:none}
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="shot" role="img" aria-label="Website-Vorschau von Top Ten Budo Akademie"></div>
+    <div class="scrim"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo"><svg width="900" height="200" viewBox="0 0 900 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="slashGrad" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(20,22)">
+    <text x="0" y="122"
+          font-family="'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="128"
+          font-weight="420"
+          letter-spacing="-6"
+          fill="#1e293b">Optimo</text>
+
+    <g transform="translate(455,10)">
+      <rect x="0" y="0" width="12" height="135" rx="6" fill="url(#slashGrad)" transform="rotate(16 6 67.5)"/>
+    </g>
+
+    <text x="512" y="122"
+          font-family="'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+          font-size="128"
+          font-weight="280"
+          letter-spacing="-4"
+          fill="#64748b">Labs</text>
+  </g>
+</svg></span>
+        <span class="crumb">Persönliche Vorschau für <b>Top Ten Budo Akademie</b></span>
+      </div>
+      <span class="pill"><span class="d"></span> Optimo Labs · KI Operations Partner</span>
+    </header>
+
+    <div class="dock">
+      <div class="bubble" id="bubble" onclick="togglePlay()">
+        <div class="ring"></div>
+        <div class="vidwrap">
+          <video id="vid" src="https://preview3.optimolabs.de/vid/b2b.mp4" playsinline preload="metadata"></video>
+        </div>
+        <div class="play"><span class="btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <span class="live">▶ Kurze Vorschau · 2:15</span>
+      </div>
+
+      <div class="say">
+        <div class="ey">Optimo Labs</div>
+        <h1>Kurze Vertriebsprozess-Vorschau für Top Ten Budo Akademie</h1>
+        <p>Eine kurze Aufnahme dazu, wie Leads und Follow-ups bei Top Ten Budo Akademie strukturierter laufen könnten.</p>
+        <a class="cta cta-go" href="https://calendly.com/hello-optimolabs/30min" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 9 5 12 1.8-5.2L21 14Z" fill="#fff" stroke="none"/>
+            <path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/>
+            <path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/>
+          </svg>
+          Kurz sprechen — 30 Minuten
+          <span class="arr">→</span>
+        </a>
+        <a class="cta" style="background:#FBF9F5;color:#4C3E5E;box-shadow:none;border:1px solid #E4DCEA" href="https://preview.optimolabs.de/b2b-vertrieb/afk-berlin/" target="_blank" rel="noopener">Passende Mockup-Vorschau ansehen →</a>
+      </div>
+    </div>
+
+    <div class="foot">Prepared by Optimo Labs</div>
+  </div>
+
+  <script>
+    var v = document.getElementById('vid');
+    var b = document.getElementById('bubble');
+    function togglePlay(){
+      if(!v) return;
+      if(v.paused){ v.play(); b.classList.add('playing'); }
+      else { v.pause(); b.classList.remove('playing'); }
+    }
+    if(v){ v.addEventListener('ended', function(){ b.classList.remove('playing'); v.currentTime=0; }); }
+  </script>
+</body>
+</html>
